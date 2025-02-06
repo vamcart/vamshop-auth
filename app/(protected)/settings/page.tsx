@@ -1,7 +1,7 @@
 'use client';
 
 import { logout } from '@/actions/logout';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 export const SettingsPage = () => {
   const session = useSession();
