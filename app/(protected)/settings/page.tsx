@@ -9,12 +9,11 @@ export const SettingsPage = () => {
     logout();
   };
   return (
-    <>
-      <div>{JSON.stringify(user)}</div>
+    <div className="bg-white p-10 rounded-xl">
       <button onClick={onClick} type="submit">
         Sign out
       </button>
-    </>
+    </div>
   );
 };
 
