@@ -1,6 +1,5 @@
 'use client';
 
-import { logout } from '@/actions/logout';
 import { settings } from '@/actions/settings';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
