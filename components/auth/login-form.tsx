@@ -64,6 +64,7 @@ export const LoginForm = () => {
             setSuccess(data.success);
           }
           if (data?.twoFactor) {
+            update();
             setShowTwoFactor(true);
           }
           update();
