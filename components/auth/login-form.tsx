@@ -5,7 +5,7 @@ import * as z from 'zod';
 import { useState, useTransition } from 'react';
 import { CardWrapper } from '@/components/auth/card-wrapper';
 import { useForm } from 'react-hook-form';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
@@ -32,6 +32,7 @@ export const LoginForm = () => {
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
+  const router = useRouter();
 
   const [isPending, startTransition] = useTransition();
 
@@ -62,6 +63,7 @@ export const LoginForm = () => {
           if (data?.twoFactor) {
             setShowTwoFactor(true);
           }
+          router.push('/settings');
         })
         .catch(() => setError('Something went wrong!'));
     });
