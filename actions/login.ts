@@ -14,10 +14,7 @@ import { getTwoFactorTokenByEmail } from '@/data/two-factor-token';
 import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation';
 import { db } from '@/lib/db';
 
-export async function login(
-  values: z.infer<typeof LoginSchema>,
-  callBackUrl?: string | null
-) {
+export async function login(values: z.infer<typeof LoginSchema>) {
   const validatedFields = LoginSchema.safeParse(values);
 
   if (!validatedFields.success) {
@@ -89,7 +86,6 @@ export async function login(
       email,
       password,
       redirect: false,
-      //redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT;
     });
   } catch (error) {
     if (error instanceof AuthError) {
