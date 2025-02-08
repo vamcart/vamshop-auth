@@ -18,7 +18,7 @@ export default auth((req) => {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
-    return null;
+    return;
   }
 
   if (isAuthRoute) {
@@ -32,7 +32,7 @@ export default auth((req) => {
     return Response.redirect(new URL('/auth/login', nextUrl));
   }
 
-  return null;
+  return;
 });
 
 // Optionally, don't invoke Middleware on some paths

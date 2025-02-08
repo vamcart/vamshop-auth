@@ -22,6 +22,7 @@ import { FormError } from '@/components/form-error';
 import { FormSuccess } from '@/components/form-success';
 import { login } from '@/actions/login';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
@@ -35,6 +36,7 @@ export const LoginForm = () => {
   const router = useRouter();
 
   const [isPending, startTransition] = useTransition();
+  const { update } = useSession();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -63,6 +65,7 @@ export const LoginForm = () => {
           if (data?.twoFactor) {
             setShowTwoFactor(true);
           }
+          update();
           router.push('/settings');
         })
         .catch(() => setError('Something went wrong!'));

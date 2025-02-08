@@ -3,7 +3,6 @@
 import * as z from 'zod';
 import { LoginSchema } from '@/schemas';
 import { signIn } from '@/auth';
-import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { AuthError } from 'next-auth';
 import {
   generateTwoFactorToken,
@@ -87,7 +86,6 @@ export async function login(values: z.infer<typeof LoginSchema>) {
       email,
       password,
       redirect: false,
-      //redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
   } catch (error) {
     if (error instanceof AuthError) {
