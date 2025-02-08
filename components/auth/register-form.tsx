@@ -1,11 +1,12 @@
 "use client";
 
 import * as z from "zod";
-
-import { useState, useTransition } from "react";
-import { CardWrapper } from "@/components/auth/card-wrapper"
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { register } from "@/actions/register";
+import { RegisterSchema } from "@/schemas";
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { CardWrapper } from "@/components/auth/card-wrapper"
 import {
     Form,
     FormControl,
@@ -16,10 +17,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { RegisterSchema } from "@/schemas";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { register } from "@/actions/register";
 
 export const RegisterForm = () => {
     const [error, setError] = useState<string | undefined>("");
@@ -89,7 +88,8 @@ export const RegisterForm = () => {
                                 <FormControl>
                                     <Input
                                         {...field}
-                                        disabled={isPending}                                        placeholder="john.doe@example.com"
+                                        disabled={isPending}                                        
+                                        placeholder="john.doe@example.com"
                                         type="email"
                                     />
                                 </FormControl>
@@ -121,7 +121,8 @@ export const RegisterForm = () => {
                         <Button
                             type="submit"
                             className="w-full"
-                            disabled={isPending}                        >
+                            disabled={isPending}                        
+                        >
                             Create an account
                         </Button>
                 </form>

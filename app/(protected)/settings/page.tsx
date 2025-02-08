@@ -37,7 +37,7 @@ import { FormError } from '@/components/form-error';
 import { FormSuccess } from '@/components/form-success';
 import { UserRole } from '@prisma/client';
 
-export const SettingsPage = () => {
+export default function SettingsPage() {
   const { update } = useSession();
   const user = useCurrentUser();
   const [isPending, startTransition] = useTransition();
@@ -216,6 +216,4 @@ export const SettingsPage = () => {
       </CardContent>
     </Card>
   );
-};
-
-export default SettingsPage;
+}
